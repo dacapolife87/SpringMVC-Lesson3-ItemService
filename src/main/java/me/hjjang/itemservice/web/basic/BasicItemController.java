@@ -73,11 +73,18 @@ public class BasicItemController {
         return "basic/item";
     }
 
-    @PostMapping("/add")
+//    @PostMapping("/add")
     public String addItemV4(Item item) {
         // Item -> item (첫글자를 소문자로 바꿈) ModelAttribute에서 생략시 생략시 item객체에 담김
         itemRepository.save(item);
         return "basic/item";
+    }
+
+    @PostMapping("/add")
+    public String addItemV5(Item item) {
+        // Item -> item (첫글자를 소문자로 바꿈) ModelAttribute에서 생략시 생략시 item객체에 담김
+        itemRepository.save(item);
+        return "redirect:/basic/items/"+item.getId();
     }
 
     @GetMapping("/{itemId}/edit")
